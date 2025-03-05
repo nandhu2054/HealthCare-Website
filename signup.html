@@ -4,33 +4,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Signup Page</title>
+    <!-- Correctly linking signup.css -->
     <link rel="stylesheet" href="signup.css">
 </head>
 <body>
- <header>
+    <header>
         <nav class="navbar">
             <div class="logo">LOGO</div>
             <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="login.html">login</a></li>
-                <li><a href="#">Suppliers</a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="home.html" class="butn">Home</a></li>
+                <li><a href="about.html" class="butn">About Us</a></li>
+                <li><a href="about.css" class="butn">Suppliers</a></li>
+                <li><a href="contact.html" class="butn">Contact Us</a></li>
+                <li><a href="login.html" class="butn">login</a></li>
             </ul>
         </nav>
     </header>
+
     <div class="register-container">
         <h2>Sign up</h2>
+  <form action="signup.php" method="POST">
         <div class="input-group">
-            <input type="text" id="username" placeholder="Username">
+            <input type="text" id="username" name="username" placeholder="Username">
         </div>
         <div class="input-group">
-            <input type="email" id="email" placeholder="Email">
+            <input type="email" id="email" name="email" placeholder="Email">
         </div>
         <div class="input-group">
             <input type="password" id="password" placeholder="Password">
         </div>
         <button onclick="signup()">Sign up</button>
+
         <p>Already have an account? <a href="login.html" style="color: #1424db;">LogIn</a></p>
     </div>
 
@@ -47,5 +51,6 @@
             }
         }
     </script>
+</form>
 </body>
 </html>
