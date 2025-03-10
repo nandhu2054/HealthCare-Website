@@ -5,6 +5,9 @@ This project is a comprehensive healthcare website for a global healthcare organ
           
 # 🔧 Technologies Used
 Frontend: HTML, CSS, JavaScript (React/Angular/Vue)
+
 Backend: Node.js, Python (Django/Flask), PHP (Laravel)
+
 Database: MySQL, PostgreSQL, MongoDB
+
 Cloud & Hosting: AWS, Firebase, Azure
