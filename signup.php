@@ -1,48 +1,50 @@
 <?php
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+include 'db_connection.php'; // Include the connection file
 
-$servername = "localhost";
-$username = "root"; // Default for XAMPP
-$password = ""; // Default is empty
-$dbname = "healthsignup";
-
-// Create database connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if form is submitted
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Sanitize and validate input
-    $username = mysqli_real_escape_string($conn, $_POST['username']);
-    $email = mysqli_real_escape_string($conn, $_POST['email']);
-    $password = mysqli_real_escape_string($conn, $_POST['password']);
-    
-    // Hash the password
+    echo "Form submitted! Processing...<br>";
+
+    if (!isset($_POST['username'], $_POST['email'], $_POST['password'])) {
+        die("Invalid form submission.");
+    }
+
+    $username = trim($_POST['username']);
+    $email = trim($_POST['email']);
+    $password = trim($_POST['password']);
+
+    if (empty($username) || empty($email) || empty($password)) {
+        die("All fields are required.");
+    }
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        die("Invalid email format.");
+    }
+
+    // Hash password
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    
+
     // Check if email already exists
-    $email_check = "SELECT * FROM users WHERE email = '$email'";
-    $result = $conn->query($email_check);
+    $stmt = $conn->prepare("SELECT id FROM users WHERE email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-    if ($result->num_rows > 0) {
-        echo "Error: Email already exists!";
+    if ($stmt->num_rows > 0) {
+        echo "<script>alert('Error: Email already exists!'); window.history.back();</script>";
     } else {
-        // Insert data into database
-        $sql = "INSERT INTO users (username, email, password) VALUES ('$username', '$email', '$hashed_password')";
+        $stmt = $conn->prepare("INSERT INTO users (username, email, password) VALUES (?, ?, ?)");
+        $stmt->bind_param("sss", $username, $email, $hashed_password);
 
-        if ($conn->query($sql) === TRUE) {
-            // Redirect after successful registration
+        if ($stmt->execute()) {
             echo "<script>alert('Registration Successful'); window.location.href='login.html';</script>";
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $stmt->error;
         }
     }
-    
+
+    $stmt->close();
     $conn->close();
 }
 ?>
