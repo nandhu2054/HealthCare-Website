@@ -21,28 +21,16 @@
     </header>
     <div class="login-container">
         <h2>Login</h2>
-        <div class="input-group">
-            <input type="text" id="username" placeholder="Username">
-        </div>
-        <div class="input-group">
-            <input type="password" id="password" placeholder="Password">
-        </div>
-        <button onclick="login()">Login</button>
-        <p>Don't have an account? <a href="signup.html" style="color: #1424db;">Sign Up</a></p>
-    </div>
 
-    <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-           
-            if (username === "admin" && password === "password") {
-                alert("Login Successful");
-            } else {
-                alert("Invalid Credentials");
-            }
-        }
-    </script>
+    <form action="login.php" method="POST">
+    <div class="input-group">
+        <input type="text" name="username" id="username" placeholder="Username" required>
+    </div>
+    <div class="input-group">
+        <input type="password" name="password" id="password" placeholder="Password" required>
+    </div>
+    <button type="submit">Login</button>
+      <p>Don't have an account? <a href="signup.html" style="color: #1424db;">Sign Up</a></p>
+</form>
 </body>
 </html>
-
