@@ -2,9 +2,9 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    text-align: center;
-    background: url('image.png') no-repeat center center fixed; /* Set background image */
-    background-size: cover; /* Ensure it covers the whole page */
+    text-align: center; 
+   /* background: linear-gradient(to right, #fff, #f0f0ff);*/
+    background-size: cover; 
     color: #333;
     height: 100vh; /* Full height */
     display: flex;
