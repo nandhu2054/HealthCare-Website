@@ -3,7 +3,7 @@ body {
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background: linear-gradient(to right,#052F3C, #297892, #71D8F9, #36A1C2, #297892, #052F3C);
+            background: linear-gradient(to right, #fff, #f0f0ff);
             color: black;
             font-family: Arial, sans-serif;
         }
@@ -43,10 +43,10 @@ body {
 }
         .register-container {
             position: relative;          
-            background:linear-gradient(to right,#89B2BE, #C3E2E4);
+            background:linear-gradient(to right, #fff,#f0f0ff);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 0 20px rgb(22, 38, 106);
+            box-shadow: 0 0 10px rgb(112, 165, 165);
             text-align: center;
         }
         .input-group {
