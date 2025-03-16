@@ -11,30 +11,45 @@
         <nav class="navbar">
             <div class="logo">LOGO</div>
             <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="suppliers.html">Suppliers</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="home.html" class="btn">Home</a></li>
+                <li><a href="aboutus.html" class="btn">About Us</a></li>
+                <li><a href="sup.html" class="btn">Suppliers</a></li>
+                <li><a href="contact.html" class="btn">Contact Us</a></li>
+                <li><a href="login.html" class="btn">login</a></li>
             </ul>
         </nav>
     </header>
 
     <div class="register-container">
         <h2>Sign up</h2>
-        <form action="signup.php" method="POST">
-            <div class="input-group">
-                <input type="text" id="username" name="username" placeholder="Username" required>
-            </div>
-            <div class="input-group">
-                <input type="email" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="input-group">
-                <input type="password" id="password" name="password" placeholder="Password" required>
-            </div>
-            <button type="submit">Sign up</button>
-        </form>
-        <p>Already have an account? <a href="login.html" style="color: #1424db;">Log In</a></p>
+  <form action="signup.php" method="POST">
+        <div class="input-group">
+            <input type="text" id="username" name="username" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="email" id="email" name="email" placeholder="Email">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button onclick="signup()">Sign up</button>
+
+        <p>Already have an account? <a href="login.html" style="color: #1424db;">LogIn</a></p>
     </div>
+
+    <script>
+        function signup() {
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+           
+            if (username && email && password) {
+                alert("Registration Successful");
+            } else {
+                alert("Please fill all fields");
+            }
+        }
+    </script>
+</form>
 </body>
 </html>
