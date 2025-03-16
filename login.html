@@ -11,26 +11,38 @@
         <nav class="navbar">
             <div class="logo">LOGO</div>
             <ul class="nav-links">
-                <li><a href="home.html">Home</a></li>
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">login</a></li>
-                <li><a href="#">Suppliers</a></li>
-                <li><a href="#">Contact Us</a></li>
+               <li><a href="home.html" class="btn">Home</a></li>
+                <li><a href="aboutus.html" class="btn">About Us</a></li>
+                <li><a href="sup.html" class="btn">Suppliers</a></li>
+                <li><a href="contact.html" class="btn">Contact Us</a></li>
+                <li><a href="login.html" class="btn">login</a></li>
             </ul>
         </nav>
     </header>
     <div class="login-container">
         <h2>Login</h2>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Username">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Password">
+        </div>
+        <button onclick="login()">Login</button>
+        <p>Don't have an account? <a href="signup.html" style="color: #1424db;">Sign Up</a></p>
+    </div>
 
-    <form action="login.php" method="POST">
-    <div class="input-group">
-        <input type="text" name="username" id="username" placeholder="Username" required>
-    </div>
-    <div class="input-group">
-        <input type="password" name="password" id="password" placeholder="Password" required>
-    </div>
-    <button type="submit">Login</button>
-      <p>Don't have an account? <a href="signup.html" style="color: #1424db;">Sign Up</a></p>
-</form>
+    <script>
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+           
+            if (username === "admin" && password === "password") {
+                alert("Login Successful");
+            } else {
+                alert("Invalid Credentials");
+            }
+        }
+    </script>
 </body>
 </html>
+
